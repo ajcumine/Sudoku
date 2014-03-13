@@ -1,9 +1,11 @@
 class Grid
-	def initialize
-		@cells = cells
-	end
-	
+
 	attr_reader :cells
+
+	def initialize(puzzle)
+		@cells = puzzle.split('')
+	end
+
 	
 	def solve
 		#

@@ -2,8 +2,8 @@ class Cell
 
 	attr_accessor :value
 
-	def initialize(neighbours)
-		@neighbours = neighbours
+	def initialize
+		@cells
 	end
 
 	def filled_in?
@@ -16,4 +16,5 @@ class Cell
 
 	def solve
 	end
+
 end
