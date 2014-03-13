@@ -2,8 +2,8 @@ class Cell
 
 	attr_accessor :value
 
-	def initialize
-		@cells
+	def initialize(value)
+		@value = value.to_i
 	end
 
 	def filled_in?
@@ -16,5 +16,4 @@ class Cell
 
 	def solve
 	end
-
 end
