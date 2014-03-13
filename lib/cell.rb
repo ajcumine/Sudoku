@@ -1,9 +1,11 @@
 class Cell
 
 	attr_accessor :value
+	attr_reader :neighbours
 
-	def initialize(value)
+	def initialize(value, neighbours)
 		@value = value.to_i
+		@neighbours = neighbours
 	end
 
 	def filled_in?
@@ -11,13 +13,12 @@ class Cell
 	end
 	
 	def possible_candidates
-		candidates = []
-		if @value == 0
-			#keep trying to find options for that cell
-			#candidates << result
-		end
+		@candidates = [1,2,3,4,5,6,7,8,9]
+		@candidates = @candidates.reject{|i| neighbours.include?(i)}
 	end
 
 	def solve
+		possible_candidates
+		@value = @candidates.pop.to_s if @candidates.length == 1
 	end
 end
