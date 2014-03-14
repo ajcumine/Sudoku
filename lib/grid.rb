@@ -13,11 +13,18 @@ class Grid
 	end
 	
 	def solve
-
+		outstanding_before, looping = SIZE, false
+		while !solved? && !looping
+			try_to_solve
+			outstanding = @cells.count {|c| c.solved? }
+			looping = outstanding_before == outstanding
+			outstanding_before = outstanding
+		end
 	end
 
 	def create_rows_and_columns
 		9.times{@rows_array << @cells.shift(9)}
+		@cells = @rows_array.flatten
 		@columns_array = @rows_array.transpose
 	end
 
@@ -28,9 +35,18 @@ class Grid
 		9.times{@box_array << box_calc2.flatten.shift(9)}
 	end
 
+	def list_neighbours
+		i = @cells.#something
+		while i == 0
+			# lists row neighbours
+			# lists column neighbours
+			# lists box neighbours
+			# returns them all in an array?
+		end
+	end
+
 	def solved?
 		return false if cells.include?('0')
 		true
 	end
-
 end

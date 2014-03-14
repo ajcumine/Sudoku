@@ -41,5 +41,19 @@ describe Grid do
 			grid.create_box
 			expect(grid.box_array[0]).to eq(["0", "0", "2", "1", "0", "7", "5", "0", "0"])
 		end
+
+		it "should produce an array of neighbours of given cell" do
+			expect()
+		end
+	end
+
+	context "for a solved sudoku" do
+
+		let(:puzzle) { '615493872348127956279568431496832517521746389783915264952681743864379125137254698' }
+		let(:grid) { Grid.new(puzzle) }
+
+		it "should recognise that the grid is complete" do
+			expect(grid.solved?).to be_true
+		end
 	end
 end
