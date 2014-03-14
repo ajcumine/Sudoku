@@ -43,7 +43,10 @@ describe Grid do
 		end
 
 		it "should produce an array of neighbours of given cell" do
-			expect()
+			grid.create_rows_and_columns
+			grid.create_box
+			grid.try_to_solve
+			expect(grid.neighbours).to eq(['2','3','4','5','6','7'])
 		end
 	end
 

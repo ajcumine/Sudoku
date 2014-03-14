@@ -13,7 +13,7 @@ class Cell
 	end
 	
 	def possible_candidates
-		@candidates = [1,2,3,4,5,6,7,8,9]
+		@candidates = (1..9).to_a
 		@candidates = @candidates.reject{|i| neighbours.include?(i)}
 	end
 

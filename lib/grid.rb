@@ -5,11 +5,13 @@ class Grid
 	attr_reader :rows_array
 	attr_reader :columns_array
 	attr_reader :box_array
+	attr_reader :neighbours
 
 	def initialize(puzzle)
 		@cells = puzzle.split(//)
 		@rows_array = []
 		@box_array = []
+		@neighbours = []
 	end
 	
 	def solve
@@ -35,18 +37,20 @@ class Grid
 		9.times{@box_array << box_calc2.flatten.shift(9)}
 	end
 
-	def list_neighbours
-		i = @cells.#something
-		while i == 0
-			# lists row neighbours
-			# lists column neighbours
-			# lists box neighbours
-			# returns them all in an array?
+	def try_to_solve
+		@cells.each_with_index do |value, index|
+			i = @cells.index(value)
+			row = i / 9
+			column = i % 9
+			row_neighbours = @rows_array[(i/9)/3]
+			column_neighbours = @columns_array[(i%9)/3]
+			box_neighbours = @box_array[(((i/9)/3) * 3) + ((i%9)/3)]
+			@neighbours = (row_neighbours + column_neighbours + box_neighbours).uniq.sort
 		end
 	end
 
 	def solved?
-		return false if cells.include?('0')
+		return false if @cells.include?('0')
 		true
 	end
 end
