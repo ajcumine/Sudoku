@@ -22,7 +22,7 @@ context "initialize" do
 		end
 	end
 
-	context "if value is 0" do 
+	context "if value is 0 and there is 1 candidate" do 
 
 		let(:cell) {Cell.new('0',[1,2,3,4,5,6,7,8])}
 
@@ -38,5 +38,16 @@ context "initialize" do
 			cell.solve
 			expect(cell.value).to eq("9")
 		end 	
-	end 
+	end
+
+	context "if the value is 0 and there is more than 1 candidate" do
+
+		let(:cell) {Cell.new('0',[1,3,6,7])}
+
+		it "should list all possible candidates to complete the cell" do
+			expect(cell.possible_candidates).to eq([2,4,5,8,9])
+			expect(cell.solve).to eq([2,4,5,8,9])
+			expect(cell.filled_in?).to be_false
+		end
+	end
 end

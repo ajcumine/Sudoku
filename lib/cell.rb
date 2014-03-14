@@ -20,5 +20,8 @@ class Cell
 	def solve
 		possible_candidates
 		@value = @candidates.pop.to_s if @candidates.length == 1
+		# needs to create and store an array of all possible 
+		# options probably?
+		# but should not fill in the cell
 	end
 end
