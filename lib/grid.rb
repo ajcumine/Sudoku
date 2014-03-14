@@ -2,31 +2,30 @@ class Grid
 
 	attr_reader :cells
 	attr_reader :puzzle
+	attr_reader :rows_array
+	attr_reader :columns_array
+	attr_reader :box_array
 
 	def initialize(puzzle)
-		@cells = puzzle.split('')
+		@cells = puzzle.split(//)
+		@rows_array = []
+		@box_array = []
 	end
-
 	
 	def solve
-		# accurately complete box of 9
-		# accurately complete row of 9
-		# accurately complete column of 9
+
 	end
 
-	def row_complete
-		# array of 9 elements - find options/candidates for all '0' elements
-		#fill in cells where there is only one option
+	def create_rows_and_columns
+		9.times{@rows_array << @cells.shift(9)}
+		@columns_array = @rows_array.transpose
 	end
 
-	def column_complete
-		# TRANSPOSE ARRAY FOR ROWS probably
-		# find options/candidates for all '0' elements
-		# fill in cells where there is only one option
-	end
-
-	def box_complete
-		# no idea how we'll do this
+	def create_box
+		box_calc2 = []
+		box_calc = @columns_array.select{|i| i}
+		3.times{box_calc.each{|i| box_calc2 << i.shift(3)}}
+		9.times{@box_array << box_calc2.flatten.shift(9)}
 	end
 
 	def solved?

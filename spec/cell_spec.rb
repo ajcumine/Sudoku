@@ -36,7 +36,7 @@ context "initialize" do
 
 		it "should solve the value of the cell" do 
 			cell.solve
-			expect(cell.value).to eq("9")
+			expect(cell.value).to eq('9')
 		end 	
 	end
 
